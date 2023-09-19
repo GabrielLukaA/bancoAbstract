@@ -1,3 +1,3 @@
 public interface IImprimivel {
-    void mostrarDados();
+    String mostrarDados();
 }
