@@ -1,0 +1,55 @@
+Abstract ContaBancaria implements Imprimivel
+- numeroDaConta
+- saldo
+ sacar()
+ depositar()
+ transferir(double d, ContaBancaria c) // usar o método depositar e sacar para isso
+
+Classe ContaCorrente extends ContaBancaria 
+- taxaDeOperacao
+
+Classe ContaPoupanca extends ContaBancaria
+- limite
+
+Interface Imprimivel
+ mostrarDados()
+
+Classe Relatorio
+ gerarRelatorio(Imprimivel imprimivel) // recebe um objeto Imprimivel e executa o método  mostrarDados
+
+Classe Main
+static ContaCorrente
+static ContaPoupanca
+// efetar um saque, no objeto poupanca, fazer saque maior que o saldo atual
+static Relatorio 
+relatorio.gerarRelatorio(ContaCorrente)
+relatorio.gerarRelatorio(ContaPoupanca)
+
+Classe Banco implements Imprmivel // consiste em executar método mostrar dados de todas as contas criadas.
+ArrayList<ContaBancaria> 
+ inserir(ContaBancaria c) // insere e remove do arraylist
+ remover(ContaBancaria c) // insere e remove do arraylist
+ContaBancaria procurarConta(int numeroDaConta)
+
+Executavel2
+Banco banco
+criarConta() // informa dados e tipo
+crie através do método inserir
+exibir mensagem de sucesso
+
+selecionarConta() //numero da conta informado
+se existir, mostra o menu abaixo, caso contrário mensagem de conta inexistente
+
+removerConta() // informa numero, se existe exclui, caso contrário mostra mensagem inexistente
+
+gerarRelatorio() // mostra dados de todas as contas 
+
+finalizar() 
+
+
+menu()
+depositar() recebe um valor e adiciona na conta
+sacar() recebe um valor e tenta sacar
+tranferir() recebe um valor e o numero de outra conta
+gerarRelatorio() mostra dados da conta selecionada
+retornar ao menu anterior()
