@@ -59,7 +59,7 @@ public class Executavel {
                 case 2 -> {
                     ContaCorrente conta = new ContaCorrente();
                     banco.inserir(conta);
-                    System.out.println("O custo por transação de sua conta é " + conta.getTaxaDeOperacao());
+                    System.out.println("O custo por transação de sua conta é de" + conta.getTaxaDeOperacao() + "%");
                     System.out.println("Conta corrente criada com sucesso.");
                 }
                 case 0 -> System.exit(0);
@@ -132,29 +132,22 @@ public class Executavel {
             System.out.println("Informe o quanto deseja transferir");
             double valor = sc.nextDouble();
             if (valor > 0) {
-                if (conta instanceof ContaCorrente) {
-                    if (valor > ((ContaCorrente) conta).getTaxaDeOperacao()) {
-                        if (conta.transferir(valor, contaAReceber)) {
-                            System.out.println("Transação realizada com sucesso.");
-                        } else {
-                            System.out.println("Saldo insuficiente para realizar essa transação.");
-                        }
 
-                    } else {
-                        System.out.println("O valor inserido é inferior a nossa taxa de operação.");
-                    }
+                if (conta.transferir(valor, contaAReceber)) {
+                    System.out.println("Transação realizada com sucesso.");
                 } else {
-
-                    if (conta.transferir(valor, contaAReceber)) {
-                        System.out.println("Transação realizada com sucesso.");
-                    } else {
-                        System.out.println("Saldo insuficiente para realizar essa transação.");
-                    }
+                    System.out.println("Saldo insuficiente para realizar essa transação.");
                 }
+
+
+            } else {
+
+                System.out.println("Valor inválido.");
             }
         } else {
-            System.out.println("Esse número não confere com nenhuma conta existente.");
+            System.out.println("Conta informada não existe.");
         }
+
 
     }
 
@@ -178,12 +171,9 @@ public class Executavel {
         double valor = sc.nextDouble();
         if (valor > 0) {
             if (conta instanceof ContaCorrente) {
-                if (valor > ((ContaCorrente) conta).getTaxaDeOperacao()) {
-                    conta.depositar(valor);
-                    System.out.println("Depósito realizado na conta corrente com sucesso.");
-                } else {
-                    System.out.println("Você está depositando um valor menor que nossa taxa de operação, operação inválida.");
-                }
+                conta.depositar(valor);
+                System.out.println("Depósito realizado na conta corrente com sucesso.");
+
             } else {
                 conta.depositar(valor);
                 System.out.println("Depósito realizado na conta poupança com sucesso.");

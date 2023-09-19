@@ -3,7 +3,7 @@ public class ContaCorrente extends ContaBancaria {
 
     public ContaCorrente() {
         super();
-        this.taxaDeOperacao = 1;
+        this.taxaDeOperacao = 3;
     }
 
     public double getTaxaDeOperacao() {
@@ -11,8 +11,8 @@ public class ContaCorrente extends ContaBancaria {
     }
 
     public boolean sacar(double valor) {
-        if (this.getSaldo()-(valor+taxaDeOperacao)>=0){
-            setSaldo(this.getSaldo()-valor);
+        if (this.getSaldo() - (valor / 100 * taxaDeOperacao) >= 0) {
+            setSaldo(this.getSaldo() - valor);
             return true;
         }
 
@@ -21,12 +21,12 @@ public class ContaCorrente extends ContaBancaria {
 
     @Override
     public void depositar(double valor) {
-        this.setSaldo(this.getSaldo() + (valor-taxaDeOperacao));
+        this.setSaldo(this.getSaldo() + (valor - (valor / 100 * taxaDeOperacao)));
     }
 
     @Override
     public String mostrarDados() {
-        return "Conta Corrente \n"+"taxa de operação - "+this.taxaDeOperacao+"\n"+
-        super.mostrarDados()+"\n\n";
+        return "Conta Corrente \n" + "taxa de operação - " + this.taxaDeOperacao + "\n" +
+                super.mostrarDados() + "\n\n";
     }
 }
